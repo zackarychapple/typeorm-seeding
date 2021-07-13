@@ -74,10 +74,30 @@ export const getConnectionOptions = async (): Promise<ConnectionOptions> => {
     if (options.length === 1) {
       const option = options[0]
       if (!option.factories) {
-        option.factories = [process.env.TYPEORM_SEEDING_FACTORIES || 'src/database/factories/**/*{.ts,.js}']
+        //TODO: Add tests around this
+        try {
+          const parsedFactories = JSON.parse(process.env.TYPEORM_SEEDING_FACTORIES)
+          if (parsedFactories instanceof Array) {
+            option.factories = parsedFactories
+          } else {
+            option.factories = [process.env.TYPEORM_SEEDING_FACTORIES || 'src/database/factories/**/*{.ts,.js}']
+          }
+        } catch (e) {
+          option.factories = [process.env.TYPEORM_SEEDING_FACTORIES || 'src/database/factories/**/*{.ts,.js}']
+        }
       }
       if (!option.seeds) {
-        option.seeds = [process.env.TYPEORM_SEEDING_SEEDS || 'src/database/seeds/**/*{.ts,.js}']
+        //TODO: Add tests around this
+        try {
+          const prasedSeeds = JSON.parse(process.env.TYPEORM_SEEDING_SEEDS)
+          if (prasedSeeds instanceof Array) {
+            option.seeds = prasedSeeds
+          } else {
+            option.seeds = [process.env.TYPEORM_SEEDING_SEEDS || 'src/database/seeds/**/*{.ts,.js}']
+          }
+        } catch (e) {
+          option.seeds = [process.env.TYPEORM_SEEDING_SEEDS || 'src/database/seeds/**/*{.ts,.js}']
+        }
       }
       ;(global as any)[KEY].ormConfig = {
         ...option,
