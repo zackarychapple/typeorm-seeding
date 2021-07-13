@@ -15,6 +15,9 @@ yarn-error.log*
 node_modules/
 .npm
 
+### idea ###
+.idea/*
+
 ### vs code ###
 .vscode/*
 !.vscode/settings.json
