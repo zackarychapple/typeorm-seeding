@@ -29,4 +29,10 @@ describe('Sample Integration Test', () => {
     const user = await connection.getRepository(User).findOne(createdUser.id)
     expect(createdUser.firstName).toBe(user.firstName)
   })
+
+  test('Should create a user overridden value with the entity factory', async () => {
+    const createdUser = await factory(User)().create({firstName: 'Bob'})
+    const user = await connection.getRepository(User).findOne(createdUser.id)
+    expect(user.firstName).toBe('Bob')
+  })
 })

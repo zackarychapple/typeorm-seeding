@@ -6,6 +6,7 @@
 .releaserc
 .sgcrc
 .travis.yml
+/.idea
 logo.png
 ormconfig.js
 tsconfig.build.json

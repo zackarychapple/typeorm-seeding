@@ -105,7 +105,7 @@ export class EntityFactory<Entity, Context> {
       }
     }
 
-    entity = await this.resolveEntity(this.factory(Faker, this.context), isSeeding)
+    entity = await this.resolveEntity(entity, isSeeding)
     if (this.mapFunction) {
       entity = await this.mapFunction(entity)
     }
