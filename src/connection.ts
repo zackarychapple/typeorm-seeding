@@ -5,7 +5,7 @@ import {
   createConnection as TypeORMCreateConnection,
   getConnection as TypeORMGetConnection,
 } from 'typeorm'
-import {printError} from './utils/log.util'
+import { printError } from './utils/log.util'
 
 interface SeedingOptions {
   factories: string[]
@@ -76,7 +76,7 @@ export const getConnectionOptions = async (): Promise<ConnectionOptions> => {
       if (!option.factories) {
         //TODO: Add tests around this
         try {
-          const parsedFactories = JSON.parse(process.env.TYPEORM_SEEDING_FACTORIES);
+          const parsedFactories = JSON.parse(process.env.TYPEORM_SEEDING_FACTORIES)
           if (parsedFactories instanceof Array) {
             option.factories = parsedFactories
           } else {
@@ -89,7 +89,7 @@ export const getConnectionOptions = async (): Promise<ConnectionOptions> => {
       if (!option.seeds) {
         //TODO: Add tests around this
         try {
-          const prasedSeeds = JSON.parse(process.env.TYPEORM_SEEDING_SEEDS);
+          const prasedSeeds = JSON.parse(process.env.TYPEORM_SEEDING_SEEDS)
           if (prasedSeeds instanceof Array) {
             option.seeds = prasedSeeds
           } else {
@@ -122,8 +122,7 @@ export const createConnection = async (option?: TypeORMConnectionOptions): Promi
   if (connection === undefined) {
     try {
       connection = await TypeORMGetConnection(configureOption.name)
-    } catch (_) {
-    }
+    } catch (_) {}
     if (connection === undefined) {
       connection = await TypeORMCreateConnection(ormConfig)
     }
