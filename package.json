@@ -33,7 +33,7 @@
     "@semantic-release/git": "^9.0.0",
     "@types/bcryptjs": "^2.4.2",
     "@types/chalk": "^2.2.0",
-    "@types/faker": "^4.1.11",
+    "@types/faker": "^5.5.7",
     "@types/glob": "7.1.4",
     "@types/jest": "^26.0.24",
     "@types/node": "13.11.1",
@@ -56,14 +56,15 @@
   },
   "dependencies": {
     "chalk": "^4.1.1",
-    "faker": "4.1.0",
+    "faker": "5.5.3",
     "glob": "7.1.7",
     "ora": "5.4.1",
     "reflect-metadata": "0.1.13",
     "yargs": "17.0.1"
   },
   "peerDependencies": {
-    "typeorm": "^0.2.34"
+    "typeorm": "^0.2.34",
+    "faker": "5.5.3"
   },
   "resolutions": {
     "mem": ">=4.0.0"
